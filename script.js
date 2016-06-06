@@ -1,63 +1,106 @@
 //library of questions
+var gameInProgress = false
+var questionCounter = 0
+var userInput = false
 var questions = [
   {
     ask: "What is 3+3?",
-    answer: "6"
+    answer: 6
   },
 
   {
     ask: "what is 3*3?",
-    answer: "9"
+    answer: 9
   },
 
   {
     ask: "what is 3/3?",
-    answer: "1"
+    answer: 1
   }
 ]
+
+//shuffle the questions
+function shuffle(questions) {
+  var currentIndex = questions.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = questions[currentIndex];
+    questions[currentIndex] = questions[randomIndex];
+    questions[randomIndex] = temporaryValue;
+  }
+  return questions;
+}
+
+shuffle(questions);
+
+
+
 
 //start the game
 $('.start').on('click',function(){
 
-  //shuffle the questions
-  function shuffle(questions) {
-    var currentIndex = questions.length, temporaryValue, randomIndex;
+  if(gameInProgress == false){
+    gameInProgress = true
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+    //display the question
+    $('#flashcard div.display').html(questions[questionCounter].ask);
 
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = questions[currentIndex];
-      questions[currentIndex] = questions[randomIndex];
-      questions[randomIndex] = temporaryValue;
+    //change the button to submit
+    $('#flashcard input.start').val('submit');
+    console.log('the game started')
     }
-    return questions;
-  }
+  else if (userInput == false) {
 
-  shuffle(questions);
+    //take user input
 
-  //display the question
-  $('#flashcard div.display').html(questions[0].ask);
 
-  //change the button to submit
-  $('#flashcard input.start').val('submit');
+    var userAnswer = $('#flashcard input.input').val()
+    console.log(userAnswer);
+    console.log(questions[questionCounter].answer);
 
-  //take the user input
-  var userinput = $('#flashcard input.input').val()
-  console.log(userinput);
+    if (userAnswer == (questions[questionCounter].answer)) {
+      questionCounter = questionCounter + 1;
+      console.log('correct')
+      console.log('questioncounter is ' + questionCounter)
+      $('#flashcard input.start').val('next');
+      userInput = true;
+    } else {
+      console.log('try again');
+    }
 
-  //compare it to the answer
-  if (userinput === $('question[0].answer')){
-    console.log('you are right')
-  } else {
-    console.log('try again')
+
+
+  } else if (gameInProgress == true, userInput == true) {
+
+    if (questions.length == questionCounter) {
+      console.log('you are done') } else {
+    $('#flashcard div.display').html(questions[questionCounter].ask);
+    userInput = false;
+    $('#flashcard input.start').val('submit');
+    }
+
+  } else if (questions.length == questionsCounter) {
+    console.log('you are done')
   }
 
 })
+
+
+  // //take the user input
+  // var userinput = $('#flashcard input.input').val()
+  // console.log(userinput);
+  //
+  // //compare it to the answer
+  // if (userinput === $('question[0].answer')){
+  //   console.log('you are right')
+  // //}
 
 
 

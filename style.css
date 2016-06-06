@@ -60,6 +60,10 @@ body {
   background-color: red;
 }
 
+.start {
+  color: green;
+}
+
 .submit {
-  value: 'submit';
+  color: blue;
 }
