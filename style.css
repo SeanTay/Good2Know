@@ -74,3 +74,20 @@ body {
 .submit {
   color: blue;
 }
+
+.btn {
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  background: #55A8B6;
+  padding: 6px 18px 6px 18px;
+  margin: 0 0 0 20px;
+  text-decoration: none;
+}
+
+input.input {
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 6px 5px;
+}

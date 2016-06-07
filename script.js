@@ -63,62 +63,45 @@ $('.start').on('click',function(){
     console.log(userAnswer);
     console.log(questions[questionCounter].answer);
 
+    // if the user gets it right change the following stuff
     if (userAnswer == (questions[questionCounter].answer)) {
+
+      //get the next question ready and tell the user its right
       questionCounter = questionCounter + 1;
       $('h2').html('Correct!');
       $('input.input').css('background','#2B8A9B')
       $('#answerbox input.start').val('next');
       userInput = true;
-    } else {
+    }
+      //if the user do not get it right tell user to try again
+      else {
       $('h2').html('Try Again');
       $('input.input').css('background','#E06C75')
     }
 
 
-
+  // if the user get it right
   } else if (gameInProgress == true, userInput == true) {
-
+    //check to see if there're any more cards left
     if (questions.length == questionCounter) {
-      console.log('you are done') } else {
-    $('#flashcard div.display').html(questions[questionCounter].ask);
-    userInput = false;
-    $('input.input').css('background','white')
-    $('#answerbox input.start').val('Submit');
-    $('h2').html('Question')
-    }
 
-  } else if (questions.length == questionsCounter) {
-    console.log('you are done')
+      $('#answerbox input.start').val('Done');
+    //   //show the next question
+    } else {
+      $('#flashcard div.display').html(questions[questionCounter].ask);
+      userInput = false;
+      $('input.input').css('background','white')
+      $('#answerbox input.start').val('Submit');
+      $('h2').html('Question')
+      }
+
   }
-
 })
 
+$('#flashcard').on('click', function(){
+  $('#flashcard').toggleClass('flipped');
+})
 
-
-
-
-
-
-
-// Have questions stored.
-//   [store]
-// When I hit a start button I want it to ask me a random question.
-//
-//   Load one of the stored questions.
-//
-// I want to be able to insert an answer to the question.
-//
-//   Create an input box.
-//
-// Check to see if the answer is correct.
-//
-//     if correct - move on to the next question.
-//
-//     if incorrect - redisplay the question and tell the user to try again.
-//
-//
-//
-//
 // Bonuses
 //
 // I want to be able to count the number of rights and the number of wrongs.
