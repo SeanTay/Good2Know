@@ -4,8 +4,8 @@ var questionCounter = 0
 var userInput = false
 var questions = [
   {
-    ask: "What is 3+3?",
-    answer: 6
+    ask: "What is my name?",
+    answer: "sean"
   },
 
   {
@@ -53,26 +53,23 @@ $('.start').on('click',function(){
     $('#flashcard div.display').html(questions[questionCounter].ask);
 
     //change the button to submit
-    $('#flashcard input.start').val('submit');
+    $('#answerbox input.start').val('submit');
     console.log('the game started')
     }
   else if (userInput == false) {
 
     //take user input
-
-
-    var userAnswer = $('#flashcard input.input').val()
+    var userAnswer = $('#answerbox input.input').val()
     console.log(userAnswer);
     console.log(questions[questionCounter].answer);
 
     if (userAnswer == (questions[questionCounter].answer)) {
       questionCounter = questionCounter + 1;
-      console.log('correct')
-      console.log('questioncounter is ' + questionCounter)
-      $('#flashcard input.start').val('next');
+      $('h2').html('Correct!')
+      $('#answerbox input.start').val('next');
       userInput = true;
     } else {
-      console.log('try again');
+      $('h2').html('Try Again');
     }
 
 
@@ -83,7 +80,8 @@ $('.start').on('click',function(){
       console.log('you are done') } else {
     $('#flashcard div.display').html(questions[questionCounter].ask);
     userInput = false;
-    $('#flashcard input.start').val('submit');
+    $('#answerbox input.start').val('submit');
+    $('h2').html('Question')
     }
 
   } else if (questions.length == questionsCounter) {
@@ -91,18 +89,6 @@ $('.start').on('click',function(){
   }
 
 })
-
-
-  // //take the user input
-  // var userinput = $('#flashcard input.input').val()
-  // console.log(userinput);
-  //
-  // //compare it to the answer
-  // if (userinput === $('question[0].answer')){
-  //   console.log('you are right')
-  // //}
-
-
 
 
 

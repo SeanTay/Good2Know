@@ -19,23 +19,22 @@ body {
 }
 
 .account {
-  background-color: #6C9A74;
+  background-image: url('flashcard.jpg');
+  background-size: contain;
   border: 1px solid #295A33;
   border-radius: 15px;
   display: inline-block;
   margin: 10px;
   padding: 10px;
-  width: 300px;
+  width: 500px;
+  height: 300px;
 }
 
 .display {
-  background-color: #E3E3E3;
-  border: 1px solid #676767;
-  border-radius: 15px;
   font-family: 'Ruluko', sans-serif;
-  font-size: 50px;
+  font-size: 25px;
   margin: 5px;
-  padding: 25px 0px;
+  padding: 19px 0px;
 }
 
 .zero {
@@ -49,6 +48,7 @@ body {
   left: 0;
   bottom: 0;
   right: 20%;
+  background-color: blue;
 }
 
 .rightside {
