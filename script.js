@@ -53,7 +53,7 @@ $('.start').on('click',function(){
     $('#flashcard div.display').html(questions[questionCounter].ask);
 
     //change the button to submit
-    $('#answerbox input.start').val('submit');
+    $('#answerbox input.start').val('Submit');
     console.log('the game started')
     }
   else if (userInput == false) {
@@ -65,11 +65,13 @@ $('.start').on('click',function(){
 
     if (userAnswer == (questions[questionCounter].answer)) {
       questionCounter = questionCounter + 1;
-      $('h2').html('Correct!')
+      $('h2').html('Correct!');
+      $('input.input').css('background','#2B8A9B')
       $('#answerbox input.start').val('next');
       userInput = true;
     } else {
       $('h2').html('Try Again');
+      $('input.input').css('background','#E06C75')
     }
 
 
@@ -80,7 +82,8 @@ $('.start').on('click',function(){
       console.log('you are done') } else {
     $('#flashcard div.display').html(questions[questionCounter].ask);
     userInput = false;
-    $('#answerbox input.start').val('submit');
+    $('input.input').css('background','white')
+    $('#answerbox input.start').val('Submit');
     $('h2').html('Question')
     }
 
