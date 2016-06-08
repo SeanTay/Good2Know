@@ -49,9 +49,11 @@ $('.start').on('click',function(){
   if(gameInProgress == false){
     gameInProgress = true
 
-    //display the question
+    //display the question on the front
     $('#flashcard div.display').html(questions[questionCounter].ask);
 
+    //display the answer on the back
+    $('#flashcard div.display2').html(questions[questionCounter].answer);
     //change the button to submit
     $('#answerbox input.start').val('Submit');
     console.log('the game started')
@@ -68,7 +70,8 @@ $('.start').on('click',function(){
 
       //get the next question ready and tell the user its right
       questionCounter = questionCounter + 1;
-      $('h2').html('Correct!');
+      $('h3').html('Correct!');
+      $('#card').toggleClass('flipped');
       $('input.input').css('background','#2B8A9B')
       $('#answerbox input.start').val('next');
       userInput = true;
@@ -80,7 +83,7 @@ $('.start').on('click',function(){
     }
 
 
-  // if the user get it right
+  // if the user get it right the button is now next
   } else if (gameInProgress == true, userInput == true) {
     //check to see if there're any more cards left
     if (questions.length == questionCounter) {
@@ -89,17 +92,21 @@ $('.start').on('click',function(){
     //   //show the next question
     } else {
       $('#flashcard div.display').html(questions[questionCounter].ask);
+      $('#card').toggleClass('flipped');
       userInput = false;
-      $('input.input').css('background','white')
+      $('input.input').css('background','white').val('');
       $('#answerbox input.start').val('Submit');
       $('h2').html('Question')
-      }
-
+      //delay showing the answer on the background
+      window.setTimeout(function(){
+        $('#flashcard div.display2').html(questions[questionCounter].answer);
+      },2000);
+    }
   }
 })
 
-$('#flashcard').on('click', function(){
-  $('#flashcard').toggleClass('flipped');
+$('input.flip.btn').on('click', function(){
+  $('#card').toggleClass('flipped');
 })
 
 // Bonuses

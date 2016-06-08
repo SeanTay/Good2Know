@@ -8,21 +8,35 @@
 
 <body>
 
+  <div class="header">
+    <div><img src="ga.png" /></div>
+    <div class="title">WDI flashcards</div>
+  </div>
   <!-- <div class="leftside"> -->
-    <div class="header">
-      <div><img src="ga.png" /></div>
-      <div class="title">WDI flashcards</div>
-    </div>
+  <section class = "account">
+      <div id = "card">
+        <figure class = "front">
+            <div id="flashcard">
+              <h2>Question</h2>
+              <div class="display" type="text">Click Start</div>
+            </div>
+        </figure>
+        <figure class = "back">
+            <div id="flashcard">
+              <h3>Answer</h3>
+              <div class="display2" type="text">Click Start</div>
+            </div>
+        </figure>
+      </div>
+  </section>
 
-    <div id="flashcard" class="account">
-      <h2>Question</h2>
-      <div class="display" type="text">Click Start</div>
-    </div>
-    <div id="answerbox">
+
+  <div id="answerbox">
       <input class="input" type="text" placeholder="your answer"/>
       <input class="start btn" type="button" value="Start" />
       <input class="flip btn" type="button" value="Flip" />
-    </div>
+  </div>
+
 
   <!-- </div> -->
 
