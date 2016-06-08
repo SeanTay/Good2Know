@@ -4,18 +4,33 @@ var questionCounter = 0
 var userInput = false
 var questions = [
   {
-    ask: "What is my name?",
-    answer: "sean"
+    ask: "In which city did he grow up?",
+    answer: "charlotte"
   },
 
   {
-    ask: "what is 3*3?",
-    answer: 9
+    ask: "Where did he go to college?",
+    answer: "nc state"
   },
 
   {
-    ask: "what is 3/3?",
-    answer: 1
+    ask: "What did he study in undergrad?",
+    answer: "mechanical engineering"
+  },
+
+  {
+    ask: "What is his favorite color?",
+    answer: "gray"
+  },
+
+  {
+    ask: "Which mid-west state did he live in?",
+    answer: "michigan"
+  },
+
+  {
+    ask: "Where was he born?",
+    answer: "burma"
   }
 ]
 
@@ -37,11 +52,7 @@ function shuffle(questions) {
   }
   return questions;
 }
-
 shuffle(questions);
-
-
-
 
 //start the game
 $('.start').on('click',function(){
@@ -51,6 +62,7 @@ $('.start').on('click',function(){
 
     //display the question on the front
     $('#flashcard div.display').html(questions[questionCounter].ask);
+    $('h2').html('Question');
 
     //display the answer on the back
     $('#flashcard div.display2').html(questions[questionCounter].answer);
@@ -61,7 +73,7 @@ $('.start').on('click',function(){
   else if (userInput == false) {
 
     //take user input
-    var userAnswer = $('#answerbox input.input').val()
+    var userAnswer = $('#answerbox input.input').val().toLowerCase();
     console.log(userAnswer);
     console.log(questions[questionCounter].answer);
 
@@ -88,7 +100,13 @@ $('.start').on('click',function(){
     //check to see if there're any more cards left
     if (questions.length == questionCounter) {
 
-      $('#answerbox input.start').val('Done');
+      $('#answerbox input.start').val('Again');
+      $('h3').html('Thanks for playing!');
+      $('#flashcard div.display2').html('');
+      gameInProgress = false;
+      userInput = false;
+      questionCounter = 0;
+      $('#card').toggleClass('flipped');
     //   //show the next question
     } else {
       $('#flashcard div.display').html(questions[questionCounter].ask);
