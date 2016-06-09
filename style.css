@@ -12,20 +12,21 @@ body {
   background-color: #EEEEEE;
   margin-top: 0;
   margin-bottom: 0;
+  background-image: url('geometry.png');
 }
 
 .topbar {
-  background-color: #2f2f2f;
+  background-color: #2B8A9B;
   margin: 0;
-  padding: 0px;
+  padding: 10px 0 5px 0;
   width: 100%;
 }
 
 
 img {
-  width:200px;
-  height: 200px;
-  border-radius:100px;
+  width:180px;
+  height: 180px;
+  border-radius:90px;
 }
 
 .header {

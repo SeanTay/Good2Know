@@ -4,7 +4,7 @@ var questionCounter = 0
 var userInput = false
 var questions = [
   {
-    ask: "In which city did he grow up?",
+    ask: "In what city did he grow up?",
     answer: "charlotte"
   },
 
@@ -29,7 +29,7 @@ var questions = [
   },
 
   {
-    ask: "Where was he born?",
+    ask: "In what country was he born?",
     answer: "burma"
   }
 ]
@@ -67,7 +67,7 @@ $('.start').on('click',function(){
     //display the answer on the back
     $('#flashcard div.display2').html(questions[questionCounter].answer);
     //change the button to submit
-    $('#answerbox input.start').val('Submit');
+    $('#answerbox input.start').val('Guess');
     console.log('the game started')
     }
   else if (userInput == false) {
@@ -85,7 +85,7 @@ $('.start').on('click',function(){
       $('h3').html('Correct!');
       $('#card').toggleClass('flipped');
       $('input.input').css('background','#2B8A9B')
-      $('#answerbox input.start').val('next');
+      $('#answerbox input.start').val('Next');
       userInput = true;
     }
       //if the user do not get it right tell user to try again
@@ -101,19 +101,20 @@ $('.start').on('click',function(){
     if (questions.length == questionCounter) {
 
       $('#answerbox input.start').val('Again');
-      $('h3').html('Thanks for playing!');
       $('#flashcard div.display2').html('');
       gameInProgress = false;
       userInput = false;
-      questionCounter = 0;
+      $('h2').html('Thanks for playing!');
+      $('#flashcard div.display').html('');
       $('#card').toggleClass('flipped');
+      questionCounter = 0;
     //   //show the next question
     } else {
       $('#flashcard div.display').html(questions[questionCounter].ask);
       $('#card').toggleClass('flipped');
       userInput = false;
-      $('input.input').css('background','white').val('');
-      $('#answerbox input.start').val('Submit');
+      $('input.input').css('background','white').val('').focus();
+      $('#answerbox input.start').val('Guess');
       $('h2').html('Question')
       //delay showing the answer on the background
       window.setTimeout(function(){
@@ -125,7 +126,21 @@ $('.start').on('click',function(){
 
 $('input.flip.btn').on('click', function(){
   $('#card').toggleClass('flipped');
-})
+});
+
+$('input.add.btn').on('click',function(){
+  //prompt for a question to be added
+  var userQ = prompt('What is the question?','Enter here.');
+  var userA = prompt('What is the answer?','Enter here.')
+  alert('New card added!')
+  //add to the array
+  var userQA = {
+    ask: userQ,
+    answer: userA,
+  }
+  questions.push(userQA);
+
+});
 
 // Bonuses
 //
