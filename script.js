@@ -57,9 +57,9 @@ shuffle(questions);
 //start the game
 $('.start').on('click',function(){
 
-  if(gameInProgress == false){
-    gameInProgress = true
-
+  if(gameInProgress == false){              // **there are a lot of if/else statements
+    gameInProgress = true                   // **perhaps you could use a switch statement in place of one of them to improve readability
+    // **if not, make sure all the if/else statements indenting is correct (including brackets etc)
     //display the question on the front
     $('#flashcard div.display').html(questions[questionCounter].ask);
     $('h2').html('Question');
@@ -69,7 +69,7 @@ $('.start').on('click',function(){
     //change the button to submit
     $('#answerbox input.start').val('Guess');
     console.log('the game started')
-    }
+  }  // **changed indenting
   else if (userInput == false) {
 
     //take user input
@@ -88,8 +88,9 @@ $('.start').on('click',function(){
       $('#answerbox input.start').val('Next');
       userInput = true;
     }
-      //if the user do not get it right tell user to try again
-      else {
+    //if the user do not get it right tell user to try again
+    // **changed indent here
+    else {
       $('h2').html('Try Again');
       $('input.input').css('background','#E06C75')
     }
@@ -120,8 +121,8 @@ $('.start').on('click',function(){
       window.setTimeout(function(){
         $('#flashcard div.display2').html(questions[questionCounter].answer);
       },2000);
-    }
-  }
+    } // **end of else statement
+  } //**end of else if statement
 })
 
 $('input.flip.btn').on('click', function(){
