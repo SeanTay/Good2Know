@@ -2,6 +2,7 @@
 var gameInProgress = false
 var questionCounter = 0
 var userInput = false
+// Be consistent with your semicolons. Either always use them, or never
 var questions = [
   {
     ask: "In what city did he grow up?",
